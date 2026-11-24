@@ -1060,3 +1060,99 @@ ats = "greenhouse"
 slug = "janestreet"
 secteur = "Banque & finance"
 domaine = "janestreet.com"
+
+# ── Grands groupes : sites carrière à consulter ──────────────────────────────
+# ats = "lien" : l'entreprise apparaît dans l'onglet Entreprises avec un lien
+# vers son site carrière, mais ses offres ne sont pas lues automatiquement
+# (site sans accès public pour les robots). Le « slug » est l'adresse du site.
+
+[[source]]
+nom = "L'Oréal"
+ats = "lien"
+slug = "https://careers.loreal.com/en"
+secteur = "Grands groupes"
+domaine = "loreal.com"
+
+[[source]]
+nom = "LVMH"
+ats = "lien"
+slug = "https://www.lvmh.com/en/join-us/our-job-offers"
+secteur = "Grands groupes"
+domaine = "lvmh.com"
+
+[[source]]
+nom = "Kering"
+ats = "lien"
+slug = "https://www.kering.com/en/talent/job-offers/"
+secteur = "Grands groupes"
+domaine = "kering.com"
+
+[[source]]
+nom = "Estée Lauder Companies"
+ats = "lien"
+slug = "https://www.elcompanies.com/en/careers"
+secteur = "Grands groupes"
+domaine = "elcompanies.com"
+
+[[source]]
+nom = "Richemont"
+ats = "lien"
+slug = "https://careers.richemont.com/en/"
+secteur = "Grands groupes"
+domaine = "richemont.com"
+
+[[source]]
+nom = "Pernod Ricard"
+ats = "lien"
+slug = "https://www.pernod-ricard.com/en/careers"
+secteur = "Grands groupes"
+domaine = "pernod-ricard.com"
+
+[[source]]
+nom = "AXA"
+ats = "lien"
+slug = "https://recrutement.axa.fr/"
+secteur = "Grands groupes"
+domaine = "axa.fr"
+
+[[source]]
+nom = "Decathlon"
+ats = "lien"
+slug = "https://joinus.decathlon.fr/"
+secteur = "Grands groupes"
+domaine = "decathlon.fr"
+
+[[source]]
+nom = "Unilever"
+ats = "lien"
+slug = "https://careers.unilever.com/"
+secteur = "Grands groupes"
+domaine = "unilever.com"
+
+[[source]]
+nom = "Sky"
+ats = "lien"
+slug = "https://careers.sky.com/"
+secteur = "Grands groupes"
+domaine = "sky.com"
+
+[[source]]
+nom = "Just Eat Takeaway"
+ats = "lien"
+slug = "https://careers.justeattakeaway.com/global/en"
+secteur = "Grands groupes"
+domaine = "justeattakeaway.com"
+
+[[source]]
+nom = "Google"
+ats = "lien"
+slug = "https://www.google.com/about/careers/applications/jobs/results/?q=product"
+secteur = "Grands groupes"
+domaine = "google.com"
+
+[[source]]
+nom = "Amazon"
+ats = "lien"
+slug = "https://www.amazon.jobs/en/"
+secteur = "Grands groupes"
+domaine = "amazon.jobs"

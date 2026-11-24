@@ -28,8 +28,9 @@
         const spark = document.createElement("span"); spark.className = "source-ai";
         spark.textContent = " ✦"; spark.title = "IA au cœur du produit"; title.append(spark);
       }
-      const offers = Number.isInteger(source.count) && source.count > 0
-        ? ` · ${source.count} offre${source.count > 1 ? "s" : ""}` : "";
+      // Link-only career sites cannot be read automatically: they are listed to visit directly.
+      const offers = source.link_only === true ? " · site à consulter"
+        : Number.isInteger(source.count) && source.count > 0 ? ` · ${source.count} offre${source.count > 1 ? "s" : ""}` : "";
       card.querySelector(".source-type").textContent = source.sector + offers;
       const link = card.querySelector(".source-link"); link.href = url;
       link.setAttribute("aria-label", "Consulter le site carrière : " + source.name);

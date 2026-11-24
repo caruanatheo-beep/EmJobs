@@ -122,7 +122,7 @@ def collect(previous: list[dict] | None = None, *, sources: tuple[Source, ...] |
             workers: int = 16) -> tuple[list[Offer], dict[str, dict]]:
     """Return offers and a per-source check. A failing source keeps its previous offers."""
     criteria = load_criteria()
-    sources = sources if sources is not None else load_sources()
+    sources = tuple(s for s in (sources if sources is not None else load_sources()) if s.collected)
     today = datetime.now(timezone.utc).date()
     previous = previous or []
     first_seen = {row["url"]: row["published"] for row in previous

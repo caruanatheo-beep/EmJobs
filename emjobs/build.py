@@ -98,7 +98,8 @@ def build(output: Path, *, offers: list[Offer], checks: dict[str, dict]) -> int:
     site_url, repo_url = site_links()
     catalog = {"updated": updated, "repository": repo_url, "sources": [
         {"name": s.name, "sector": s.sector, "url": s.board_url, "logo": logos[s.name], "ai": s.ai,
-         "count": int(checks.get(s.name, {}).get("count", 0))} for s in sorted(sources, key=lambda s: s.name.casefold())]}
+         "count": int(checks.get(s.name, {}).get("count", 0)), "link_only": not s.collected}
+        for s in sorted(sources, key=lambda s: s.name.casefold())]}
     catalog_bytes = json.dumps(catalog, ensure_ascii=False, separators=(",", ":")).encode()
     assert_public(catalog_bytes, "sources.json")
 

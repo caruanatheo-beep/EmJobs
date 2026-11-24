@@ -15,7 +15,7 @@ import requests
 
 from .classify import cities
 from .collect import offers_from
-from .config import ATS, Source, load_criteria
+from .config import Source, load_criteria
 from .connectors import CONNECTORS
 
 
@@ -37,9 +37,9 @@ def try_board(ats: str, slug: str) -> str:
 def main(argv: list[str]) -> int:
     sys.stdout.reconfigure(encoding="utf-8")  # Windows consoles default to a legacy code page.
     boards = [item.strip() for arg in argv for item in arg.split(",") if item.strip()]
-    if not boards or any(":" not in board or board.split(":", 1)[0] not in ATS for board in boards):
+    if not boards or any(":" not in board or board.split(":", 1)[0] not in CONNECTORS for board in boards):
         print(__doc__)
-        print("Outils possibles :", ", ".join(sorted(ATS)))
+        print("Outils possibles :", ", ".join(sorted(CONNECTORS)))
         return 2
     for board in boards:
         ats, slug = board.split(":", 1)

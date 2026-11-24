@@ -49,6 +49,12 @@ Pour Workday, le `TENANT` est le premier mot de l'hôte : pour
 `nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite`, le slug est
 `nvidia.wd5.myworkdayjobs.com/nvidia/NVIDIAExternalCareerSite`.
 
+Si l'entreprise n'utilise aucun de ces outils (cas fréquent des grands
+groupes : L'Oréal, LVMH…), tu peux quand même l'afficher dans l'onglet
+Entreprises avec un lien direct vers son site carrière : `ats = "lien"` et,
+dans `slug`, l'adresse complète du site (`https://…`). Ses offres ne seront pas
+lues automatiquement ; la carte indique « site à consulter ».
+
 Pour mettre une entreprise en pause sans la supprimer : ajoute `actif = false`.
 
 ### Tester une entreprise avant de l'ajouter

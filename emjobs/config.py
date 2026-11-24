@@ -10,9 +10,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_DIR = ROOT / "config"
 ATS = {"greenhouse", "lever", "ashby", "smartrecruiters", "workday", "oracle", "successfactors",
-       "teamtailor", "workable", "recruitee", "socgen", "bpce", "talentsoft", "avature", "cagroup"}
+       "teamtailor", "workable", "recruitee", "socgen", "bpce", "talentsoft", "avature", "cagroup", "lien"}
 _HOST = r"[a-z0-9-]+(?:\.[a-z0-9-]+)+"
 _SLUG = {
+    # "lien": a career site listed on the Entreprises tab but not collected (slug = its https address).
+    "lien": r"https://[a-z0-9-]+(?:\.[a-z0-9-]+)+(?:/[A-Za-z0-9._~%/?=&#-]*)?",
     "socgen": _HOST, "talentsoft": _HOST, "cagroup": _HOST,
     "avature": r"[a-z0-9-]+\.avature\.net/[A-Za-z0-9_-]+",
     "workday": r"[a-z0-9-]+\.wd\d+\.myworkdayjobs\.com/[A-Za-z0-9_-]+/[A-Za-z0-9_-]+",
@@ -37,7 +39,14 @@ class Source:
     ai: bool = False
 
     @property
+    def collected(self) -> bool:
+        """False for link-only career sites, which Em Jobs cannot read automatically."""
+        return self.ats != "lien"
+
+    @property
     def board_url(self) -> str:
+        if self.ats == "lien":
+            return self.slug
         if self.ats == "greenhouse":
             return f"https://job-boards.greenhouse.io/{self.slug}"
         if self.ats == "lever":
