@@ -169,7 +169,7 @@ def _patient(send, *args, attempts: int = 4, **kwargs) -> requests.Response:
             response.raise_for_status()
             return response
         retry = response.headers.get("Retry-After", "")
-        time.sleep(min(30, int(retry)) if retry.isdigit() else 4 * (attempt + 1))
+        time.sleep(min(60, int(retry)) if retry.isdigit() else min(60, 5 * 2 ** attempt))
     raise AssertionError("unreachable")
 
 
@@ -188,7 +188,7 @@ def workday(source: Source, session: requests.Session) -> list[RawJob]:
     # details are read later, only for titles that pass the Em Jobs filter.
     for term in WORKDAY_TERMS:
         for offset in range(0, 100, 20):
-            response = _patient(session.post, f"{api}/jobs", headers={"Content-Type": "application/json"},
+            response = _patient(session.post, f"{api}/jobs", attempts=6, headers={"Content-Type": "application/json"},
                                 json={"appliedFacets": {}, "limit": 20, "offset": offset, "searchText": term})
             payload = response.json()
             postings = payload.get("jobPostings") if isinstance(payload, dict) else None
