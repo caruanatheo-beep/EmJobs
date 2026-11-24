@@ -1,0 +1,27 @@
+name: Proposer une entreprise
+description: Suggérer une entreprise à suivre sur Em Jobs
+title: "Entreprise : "
+labels: ["nouvelle entreprise"]
+body:
+  - type: input
+    id: entreprise
+    attributes:
+      label: Entreprise
+      placeholder: Ex. Hugging Face
+    validations:
+      required: true
+  - type: input
+    id: lien
+    attributes:
+      label: Lien de la page carrière
+      placeholder: https://…
+    validations:
+      required: true
+  - type: textarea
+    id: pourquoi
+    attributes:
+      label: Pourquoi l'ajouter ? (facultatif)
+      placeholder: Ex. stages Product Manager à Paris chaque année.
+  - type: markdown
+    attributes:
+      value: "Cette suggestion est publique : n'y mets aucune donnée personnelle."

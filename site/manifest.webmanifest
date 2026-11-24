@@ -1,0 +1,16 @@
+{
+  "name": "Em Jobs · Road to Product",
+  "short_name": "Em Jobs",
+  "description": "Stages, VIE et premiers postes en product, UX et growth dans la tech et l’IA, à Paris et à Londres.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f3fc",
+  "theme_color": "#6a3fd6",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "em-logo.svg", "sizes": "any", "type": "image/svg+xml"}
+  ]
+}

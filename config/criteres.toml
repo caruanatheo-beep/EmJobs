@@ -1,0 +1,138 @@
+# Critères de sélection des offres Em Jobs.
+#
+# Les expressions sont comparées sans tenir compte des majuscules ni des accents,
+# et toujours en mots entiers : « product » ne trouve pas « production ».
+# Exception : une expression écrite tout en MAJUSCULES (ex. « VIE ») doit
+# apparaître en majuscules, pour ne pas confondre le VIE et le mot « vie ».
+# Après une modification, le site est reconstruit automatiquement et les tests
+# vérifient le fichier : une erreur bloque la publication sans casser le site.
+
+# ── Lieux ────────────────────────────────────────────────────────────────────
+# Une offre est gardée si l'un de ses lieux contient une de ces expressions.
+
+[[lieu]]
+ville = "Paris"
+pays = "France"
+expressions = ["paris", "la defense", "ile de france", "boulogne billancourt",
+               "issy les moulineaux", "levallois perret", "neuilly sur seine",
+               "puteaux", "courbevoie", "clichy", "saint ouen", "montrouge"]
+
+[[lieu]]
+ville = "Londres"
+pays = "Royaume-Uni"
+expressions = ["london", "londres"]
+
+# ── Types de contrat ─────────────────────────────────────────────────────────
+# Cherchés dans l'intitulé, puis dans le type de contrat donné par l'employeur.
+# L'ordre compte : le premier type trouvé l'emporte.
+
+[[contrat]]
+nom = "VIE"
+expressions = ["VIE", "V.I.E", "volontariat international", "volontaire international"]
+
+[[contrat]]
+nom = "Stage"
+expressions = ["intern", "interns", "internship", "internships", "stage", "stagiaire",
+               "placement", "industrial placement", "off cycle", "summer analyst",
+               "summer associate", "work experience"]
+
+[[contrat]]
+nom = "Graduate"
+expressions = ["graduate", "graduates", "grad", "new grad", "new graduate", "early career",
+               "early careers", "rotational", "rotation program", "rotation programme",
+               "apm", "associate product manager", "associate product management",
+               "jeune diplome", "jeune diplomee", "campus hire", "university grad"]
+
+[[contrat]]
+nom = "Junior"
+expressions = ["junior", "jr", "entry level", "first job", "premier emploi",
+               "associate product marketing manager", "associate product designer",
+               "associate product owner", "associate product analyst"]
+
+# Une offre sans mot-clé de contrat dans l'intitulé (ex. « Product Manager »)
+# devient Junior si sa description contient une de ces expressions…
+[junior_par_description]
+expressions = ["0 2 years", "0 to 2 years", "1 2 years", "1 to 2 years", "up to 2 years",
+               "0 1 year", "0 1 years", "1 year of experience", "1 years of experience",
+               "recent graduate", "recently graduated", "new graduate", "first experience",
+               "premiere experience", "0 a 2 ans", "1 a 2 ans", "jeune diplome", "jeune diplomee",
+               "entry level", "early in your career", "early career"]
+# … ou si elle demande au plus ce nombre d'années d'expérience (et jamais davantage).
+annees_max = 2
+
+# ── Métiers ──────────────────────────────────────────────────────────────────
+# L'ordre compte : le premier métier trouvé dans l'intitulé l'emporte.
+# « poids » sert au tri par pertinence (plus il est élevé, plus l'offre remonte).
+
+[[metier]]
+nom = "Product Management"
+poids = 40
+expressions = ["product manager", "product managers", "product management", "product owner",
+               "product owners", "apm", "associate product manager", "pm intern", "pm internship",
+               "product intern", "product internship", "stage product", "stagiaire product",
+               "product builder", "product strategy", "chef de projet produit", "cheffe de projet produit",
+               "product management intern", "product mgmt", "proxy product owner", "ai product"]
+
+[[metier]]
+nom = "Product Ops & Analytics"
+poids = 32
+expressions = ["product operations", "product ops", "product analyst", "product analysts",
+               "product analytics", "product data analyst", "product insights",
+               "product data scientist"]
+
+[[metier]]
+nom = "Product Marketing & Chef de produit"
+poids = 28
+# En France, « chef de produit » désigne souvent un poste marketing (gamme, marque).
+expressions = ["product marketing", "product marketer", "pmm", "marketing produit",
+               "go to market", "gtm strategy", "gtm manager", "chef de produit", "cheffe de produit",
+               "chef fe de produit", "chef e de produit", "chefs de produit", "chef de produits"]
+
+[[metier]]
+nom = "Design & UX Research"
+poids = 24
+expressions = ["product designer", "product design", "ux designer", "ui designer",
+               "ux ui", "ui ux", "ux research", "ux researcher", "user researcher",
+               "user research", "design produit", "designer produit", "content designer",
+               "ux", "ui", "ux writer", "interaction designer", "service designer", "design system",
+               "user experience", "experience utilisateur", "ergonome"]
+
+[[metier]]
+nom = "Growth & Strategy"
+poids = 24
+expressions = ["growth", "growth hacker", "growth marketing", "strategy operations", "strategy and operations", "bizops",
+               "business operations", "strategy analyst", "strategy intern",
+               "strategy associate", "strategic projects", "chief of staff", "venture builder",
+               "deployment strategist", "implementation strategist", "founder associate",
+               "founders associate", "founder s associate"]
+
+# Tous les autres postes « produit » (analyste produit, spécialiste produit,
+# stage produit…), placés en dernier pour ne pas masquer les métiers ci-dessus.
+[[metier]]
+nom = "Produit (autres)"
+poids = 22
+expressions = ["product", "products", "produit", "produits"]
+
+# ── Exclusions ───────────────────────────────────────────────────────────────
+# Une offre est écartée si son intitulé contient une de ces expressions.
+
+[exclusions]
+# Niveau trop élevé pour un premier poste.
+seniorite = ["senior", "sr", "staff", "principal", "lead", "head", "director", "directeur",
+             "directrice", "vp", "vice president", "group product", "confirme", "confirmee",
+             "experienced", "experimente", "experimentee", "manager of", "ii", "iii", "iv",
+             "mba", "phd", "doctoral", "postdoc", "expert"]
+# Métiers qui contiennent « product » ou « produit » sans relever du produit.
+metiers = ["product security", "product engineer", "product engineering", "product counsel",
+           "product control", "product controller", "product test", "product information",
+           "product compliance", "account executive", "produits financiers", "produits structures",
+           "financial products", "structured products", "produits frais", "produits laitiers",
+           "solutions architect", "solution architect", "software engineer", "translator",
+           "legal", "juriste", "manufacturing", "quality assurance", "sales", "engineer",
+           "engineers", "engineering", "developer", "developpeur", "developpeuse", "machine learning",
+           "production", "supply chain", "category manager", "controls", "fixed income",
+           "middle office", "back office", "kyc"]
+# Contrats non retenus. Retire « alternance » et « apprentice » de cette liste
+# pour afficher aussi les alternances.
+contrats = ["alternance", "alternant", "alternante", "apprenti", "apprentie",
+            "apprentice", "apprenticeship", "work study", "freelance", "contractor"]

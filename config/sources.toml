@@ -1,0 +1,876 @@
+# Entreprises suivies par Em Jobs.
+#
+# Pour ajouter une entreprise, copie un bloc [[source]] et change les valeurs :
+#   nom      : nom affiché sur le site
+#   ats      : outil de recrutement utilisé par l'entreprise
+#              (greenhouse, lever, ashby, smartrecruiters ou workday)
+#   slug     : identifiant de l'entreprise dans cet outil, visible dans l'URL
+#              de sa page carrière (ex. jobs.ashbyhq.com/doctolib -> doctolib)
+#   secteur  : regroupement affiché dans les filtres et l'onglet Sources
+#   domaine  : site de l'entreprise, utilisé pour son logo
+#   ia       : true si l'entreprise fait de l'IA son cœur de métier (bonus de pertinence)
+#
+# Pour Workday, le slug s'écrit "hôte/tenant/site", par exemple
+#   nvidia.wd5.myworkdayjobs.com/nvidia/NVIDIAExternalCareerSite
+#
+# Pour retirer une entreprise sans la supprimer, ajoute : actif = false
+# Le guide COMMENT_MODIFIER.md explique comment trouver l'ATS d'une entreprise.
+
+# ── Intelligence artificielle ────────────────────────────────────────────────
+
+[[source]]
+nom = "Anthropic"
+ats = "greenhouse"
+slug = "anthropic"
+secteur = "IA"
+domaine = "anthropic.com"
+ia = true
+
+[[source]]
+nom = "OpenAI"
+ats = "ashby"
+slug = "openai"
+secteur = "IA"
+domaine = "openai.com"
+ia = true
+
+[[source]]
+nom = "ElevenLabs"
+ats = "ashby"
+slug = "elevenlabs"
+secteur = "IA"
+domaine = "elevenlabs.io"
+ia = true
+
+[[source]]
+nom = "Synthesia"
+ats = "ashby"
+slug = "synthesia"
+secteur = "IA"
+domaine = "synthesia.io"
+ia = true
+
+[[source]]
+nom = "Cohere"
+ats = "ashby"
+slug = "cohere"
+secteur = "IA"
+domaine = "cohere.com"
+ia = true
+
+[[source]]
+nom = "Perplexity"
+ats = "ashby"
+slug = "perplexity"
+secteur = "IA"
+domaine = "perplexity.ai"
+ia = true
+
+[[source]]
+nom = "Photoroom"
+ats = "ashby"
+slug = "photoroom"
+secteur = "IA"
+domaine = "photoroom.com"
+ia = true
+
+[[source]]
+nom = "Dust"
+ats = "ashby"
+slug = "dust"
+secteur = "IA"
+domaine = "dust.tt"
+ia = true
+
+[[source]]
+nom = "H Company"
+ats = "ashby"
+slug = "hcompany"
+secteur = "IA"
+domaine = "hcompany.ai"
+ia = true
+
+[[source]]
+nom = "Wayve"
+ats = "ashby"
+slug = "wayve"
+secteur = "IA"
+domaine = "wayve.ai"
+ia = true
+
+[[source]]
+nom = "PolyAI"
+ats = "greenhouse"
+slug = "polyai"
+secteur = "IA"
+domaine = "poly.ai"
+ia = true
+
+[[source]]
+nom = "Faculty"
+ats = "ashby"
+slug = "faculty"
+secteur = "IA"
+domaine = "faculty.ai"
+ia = true
+
+[[source]]
+nom = "Harvey"
+ats = "ashby"
+slug = "harvey"
+secteur = "IA"
+domaine = "harvey.ai"
+ia = true
+
+[[source]]
+nom = "Sierra"
+ats = "ashby"
+slug = "sierra"
+secteur = "IA"
+domaine = "sierra.ai"
+ia = true
+
+[[source]]
+nom = "Lovable"
+ats = "ashby"
+slug = "lovable"
+secteur = "IA"
+domaine = "lovable.dev"
+ia = true
+
+[[source]]
+nom = "Cognition"
+ats = "ashby"
+slug = "cognition"
+secteur = "IA"
+domaine = "cognition.ai"
+ia = true
+
+[[source]]
+nom = "Writer"
+ats = "ashby"
+slug = "writer"
+secteur = "IA"
+domaine = "writer.com"
+ia = true
+
+[[source]]
+nom = "Owkin"
+ats = "ashby"
+slug = "owkin"
+secteur = "IA"
+domaine = "owkin.com"
+ia = true
+
+[[source]]
+nom = "Nabla"
+ats = "ashby"
+slug = "nabla"
+secteur = "IA"
+domaine = "nabla.com"
+ia = true
+
+[[source]]
+nom = "Scale AI"
+ats = "greenhouse"
+slug = "scaleai"
+secteur = "IA"
+domaine = "scale.com"
+ia = true
+
+[[source]]
+nom = "Dataiku"
+ats = "greenhouse"
+slug = "dataiku"
+secteur = "IA"
+domaine = "dataiku.com"
+ia = true
+
+[[source]]
+nom = "Databricks"
+ats = "greenhouse"
+slug = "databricks"
+secteur = "IA"
+domaine = "databricks.com"
+ia = true
+
+[[source]]
+nom = "Palantir"
+ats = "lever"
+slug = "palantir"
+secteur = "IA"
+domaine = "palantir.com"
+ia = true
+
+[[source]]
+nom = "Graphcore"
+ats = "greenhouse"
+slug = "graphcore"
+secteur = "IA"
+domaine = "graphcore.ai"
+ia = true
+
+[[source]]
+nom = "NVIDIA"
+ats = "workday"
+slug = "nvidia.wd5.myworkdayjobs.com/nvidia/NVIDIAExternalCareerSite"
+secteur = "IA"
+domaine = "nvidia.com"
+ia = true
+
+# ── Logiciels & outils ───────────────────────────────────────────────────────
+
+[[source]]
+nom = "Datadog"
+ats = "greenhouse"
+slug = "datadog"
+secteur = "Logiciels & outils"
+domaine = "datadoghq.com"
+
+[[source]]
+nom = "Figma"
+ats = "greenhouse"
+slug = "figma"
+secteur = "Logiciels & outils"
+domaine = "figma.com"
+
+[[source]]
+nom = "Notion"
+ats = "ashby"
+slug = "notion"
+secteur = "Logiciels & outils"
+domaine = "notion.so"
+
+[[source]]
+nom = "Intercom"
+ats = "greenhouse"
+slug = "intercom"
+secteur = "Logiciels & outils"
+domaine = "intercom.com"
+
+[[source]]
+nom = "Linear"
+ats = "ashby"
+slug = "linear"
+secteur = "Logiciels & outils"
+domaine = "linear.app"
+
+[[source]]
+nom = "Attio"
+ats = "ashby"
+slug = "attio"
+secteur = "Logiciels & outils"
+domaine = "attio.com"
+
+[[source]]
+nom = "Vercel"
+ats = "greenhouse"
+slug = "vercel"
+secteur = "Logiciels & outils"
+domaine = "vercel.com"
+
+[[source]]
+nom = "Pigment"
+ats = "lever"
+slug = "pigment"
+secteur = "Logiciels & outils"
+domaine = "pigment.com"
+
+[[source]]
+nom = "Mirakl"
+ats = "greenhouse"
+slug = "mirakl"
+secteur = "Logiciels & outils"
+domaine = "mirakl.com"
+
+[[source]]
+nom = "Contentsquare"
+ats = "lever"
+slug = "contentsquare"
+secteur = "Logiciels & outils"
+domaine = "contentsquare.com"
+
+[[source]]
+nom = "Algolia"
+ats = "greenhouse"
+slug = "algolia"
+secteur = "Logiciels & outils"
+domaine = "algolia.com"
+
+[[source]]
+nom = "Brevo"
+ats = "lever"
+slug = "brevo"
+secteur = "Logiciels & outils"
+domaine = "brevo.com"
+
+[[source]]
+nom = "lemlist"
+ats = "ashby"
+slug = "lemlist"
+secteur = "Logiciels & outils"
+domaine = "lemlist.com"
+
+[[source]]
+nom = "Typeform"
+ats = "greenhouse"
+slug = "typeform"
+secteur = "Logiciels & outils"
+domaine = "typeform.com"
+
+[[source]]
+nom = "Doctrine"
+ats = "lever"
+slug = "doctrine"
+secteur = "Logiciels & outils"
+domaine = "doctrine.fr"
+
+[[source]]
+nom = "Shift Technology"
+ats = "greenhouse"
+slug = "shifttechnology"
+secteur = "Logiciels & outils"
+domaine = "shift-technology.com"
+
+[[source]]
+nom = "Canva"
+ats = "smartrecruiters"
+slug = "canva"
+secteur = "Logiciels & outils"
+domaine = "canva.com"
+
+[[source]]
+nom = "Malt"
+ats = "lever"
+slug = "malt"
+secteur = "Logiciels & outils"
+domaine = "malt.com"
+
+[[source]]
+nom = "Multiverse"
+ats = "ashby"
+slug = "multiverse"
+secteur = "Logiciels & outils"
+domaine = "multiverse.io"
+
+# ── Fintech ──────────────────────────────────────────────────────────────────
+
+[[source]]
+nom = "Stripe"
+ats = "greenhouse"
+slug = "stripe"
+secteur = "Fintech"
+domaine = "stripe.com"
+
+[[source]]
+nom = "Qonto"
+ats = "ashby"
+slug = "qonto"
+secteur = "Fintech"
+domaine = "qonto.com"
+
+[[source]]
+nom = "Pennylane"
+ats = "ashby"
+slug = "pennylane"
+secteur = "Fintech"
+domaine = "pennylane.com"
+
+[[source]]
+nom = "Monzo"
+ats = "greenhouse"
+slug = "monzo"
+secteur = "Fintech"
+domaine = "monzo.com"
+
+[[source]]
+nom = "Wise"
+ats = "smartrecruiters"
+slug = "wise"
+secteur = "Fintech"
+domaine = "wise.com"
+
+[[source]]
+nom = "Ledger"
+ats = "ashby"
+slug = "ledger"
+secteur = "Fintech"
+domaine = "ledger.com"
+
+[[source]]
+nom = "Alma"
+ats = "ashby"
+slug = "alma"
+secteur = "Fintech"
+domaine = "getalma.eu"
+
+[[source]]
+nom = "Swile"
+ats = "lever"
+slug = "swile"
+secteur = "Fintech"
+domaine = "swile.co"
+
+[[source]]
+nom = "SumUp"
+ats = "greenhouse"
+slug = "sumup"
+secteur = "Fintech"
+domaine = "sumup.com"
+
+[[source]]
+nom = "Tide"
+ats = "greenhouse"
+slug = "tide"
+secteur = "Fintech"
+domaine = "tide.co"
+
+[[source]]
+nom = "Zilch"
+ats = "ashby"
+slug = "zilch"
+secteur = "Fintech"
+domaine = "zilch.com"
+
+[[source]]
+nom = "OakNorth"
+ats = "ashby"
+slug = "oaknorth"
+secteur = "Fintech"
+domaine = "oaknorth.com"
+
+[[source]]
+nom = "Paddle"
+ats = "ashby"
+slug = "paddle"
+secteur = "Fintech"
+domaine = "paddle.com"
+
+[[source]]
+nom = "Marshmallow"
+ats = "ashby"
+slug = "marshmallow"
+secteur = "Fintech"
+domaine = "marshmallow.com"
+
+# ── Santé ────────────────────────────────────────────────────────────────────
+
+[[source]]
+nom = "Doctolib"
+ats = "ashby"
+slug = "doctolib"
+secteur = "Santé"
+domaine = "doctolib.fr"
+
+[[source]]
+nom = "Alan"
+ats = "ashby"
+slug = "alan"
+secteur = "Santé"
+domaine = "alan.com"
+
+# ── Grand public & marketplaces ──────────────────────────────────────────────
+
+[[source]]
+nom = "Spotify"
+ats = "lever"
+slug = "spotify"
+secteur = "Grand public"
+domaine = "spotify.com"
+
+[[source]]
+nom = "Back Market"
+ats = "ashby"
+slug = "backmarket"
+secteur = "Grand public"
+domaine = "backmarket.com"
+
+[[source]]
+nom = "Deliveroo"
+ats = "greenhouse"
+slug = "deliveroo"
+secteur = "Grand public"
+domaine = "deliveroo.co.uk"
+
+[[source]]
+nom = "Airbnb"
+ats = "greenhouse"
+slug = "airbnb"
+secteur = "Grand public"
+domaine = "airbnb.com"
+
+[[source]]
+nom = "BlaBlaCar"
+ats = "lever"
+slug = "blablacar"
+secteur = "Grand public"
+domaine = "blablacar.com"
+
+[[source]]
+nom = "Trainline"
+ats = "ashby"
+slug = "trainline"
+secteur = "Grand public"
+domaine = "thetrainline.com"
+
+[[source]]
+nom = "Sorare"
+ats = "ashby"
+slug = "sorare"
+secteur = "Grand public"
+domaine = "sorare.com"
+
+[[source]]
+nom = "Ubisoft"
+ats = "smartrecruiters"
+slug = "Ubisoft2"
+secteur = "Grand public"
+domaine = "ubisoft.com"
+
+# ── Banque & finance ─────────────────────────────────────────────────────────
+# Connecteurs propres à ces employeurs : socgen, bpce (Open Data du groupe),
+# talentsoft (slug = hôte du site carrière), avature (slug = hôte/portail) et
+# cagroup (groupecreditagricole.jobs : toutes les entités, dont CACEIS et LCL).
+
+[[source]]
+nom = "Société Générale"
+ats = "socgen"
+slug = "careers.societegenerale.com"
+secteur = "Banque & finance"
+domaine = "societegenerale.com"
+
+[[source]]
+nom = "Groupe BPCE"
+ats = "bpce"
+slug = "groupe-bpce-offres-emploi"
+secteur = "Banque & finance"
+domaine = "groupebpce.com"
+
+[[source]]
+nom = "Crédit Agricole CIB"
+ats = "talentsoft"
+slug = "jobs.ca-cib.com"
+secteur = "Banque & finance"
+domaine = "ca-cib.com"
+
+[[source]]
+nom = "Amundi"
+ats = "talentsoft"
+slug = "jobs.amundi.com"
+secteur = "Banque & finance"
+domaine = "amundi.com"
+
+[[source]]
+nom = "Groupe Crédit Agricole"
+ats = "cagroup"
+slug = "groupecreditagricole.jobs"
+secteur = "Banque & finance"
+domaine = "credit-agricole.com"
+
+[[source]]
+nom = "Bloomberg"
+ats = "avature"
+slug = "bloomberg.avature.net/careers"
+secteur = "Données & médias"
+domaine = "bloomberg.com"
+
+# ── Banque & finance (Workday, Oracle, SuccessFactors) ────────────────────────
+
+[[source]]
+nom = "Barclays"
+ats = "workday"
+slug = "barclays.wd3.myworkdayjobs.com/barclays/External_Career_Site_Barclays"
+secteur = "Banque & finance"
+domaine = "barclays.com"
+
+[[source]]
+nom = "LSEG"
+ats = "workday"
+slug = "lseg.wd3.myworkdayjobs.com/lseg/Careers"
+secteur = "Banque & finance"
+domaine = "lseg.com"
+
+[[source]]
+nom = "Euronext"
+ats = "workday"
+slug = "hrhub.wd3.myworkdayjobs.com/hrhub/Euronext_Career_Page"
+secteur = "Banque & finance"
+domaine = "euronext.com"
+
+[[source]]
+nom = "Deutsche Bank"
+ats = "workday"
+slug = "db.wd3.myworkdayjobs.com/db/DBWebsite"
+secteur = "Banque & finance"
+domaine = "db.com"
+
+[[source]]
+nom = "Citi"
+ats = "workday"
+slug = "citi.wd5.myworkdayjobs.com/citi/2"
+secteur = "Banque & finance"
+domaine = "citigroup.com"
+
+[[source]]
+nom = "NatWest"
+ats = "workday"
+slug = "rbs.wd3.myworkdayjobs.com/rbs/RBS"
+secteur = "Banque & finance"
+domaine = "natwestgroup.com"
+
+[[source]]
+nom = "ING"
+ats = "workday"
+slug = "ing.wd3.myworkdayjobs.com/ing/ICSGBLCOR"
+secteur = "Banque & finance"
+domaine = "ing.com"
+
+[[source]]
+nom = "Santander"
+ats = "workday"
+slug = "santander.wd3.myworkdayjobs.com/santander/SantanderCareers"
+secteur = "Banque & finance"
+domaine = "santander.com"
+
+[[source]]
+nom = "BBVA"
+ats = "workday"
+slug = "bbva.wd3.myworkdayjobs.com/bbva/BBVA"
+secteur = "Banque & finance"
+domaine = "bbva.com"
+
+[[source]]
+nom = "State Street"
+ats = "workday"
+slug = "statestreet.wd1.myworkdayjobs.com/statestreet/Global"
+secteur = "Banque & finance"
+domaine = "statestreet.com"
+
+[[source]]
+nom = "BlackRock"
+ats = "workday"
+slug = "blackrock.wd1.myworkdayjobs.com/blackrock/BlackRock_Professional"
+secteur = "Banque & finance"
+domaine = "blackrock.com"
+
+[[source]]
+nom = "Fidelity International"
+ats = "workday"
+slug = "fil.wd3.myworkdayjobs.com/fil/001"
+secteur = "Banque & finance"
+domaine = "fidelityinternational.com"
+
+[[source]]
+nom = "Invesco"
+ats = "workday"
+slug = "invesco.wd1.myworkdayjobs.com/invesco/IVZ"
+secteur = "Banque & finance"
+domaine = "invesco.com"
+
+[[source]]
+nom = "TP ICAP"
+ats = "workday"
+slug = "tp.wd107.myworkdayjobs.com/tp/TP-ICAP"
+secteur = "Banque & finance"
+domaine = "tpicap.com"
+
+[[source]]
+nom = "Rothschild & Co"
+ats = "workday"
+slug = "rothschildandco.wd3.myworkdayjobs.com/rothschildandco/Rothschildandco_Lateral"
+secteur = "Banque & finance"
+domaine = "rothschildandco.com"
+
+[[source]]
+nom = "MUFG"
+ats = "workday"
+slug = "mufgub.wd3.myworkdayjobs.com/mufgub/MUFG-Careers"
+secteur = "Banque & finance"
+domaine = "mufg.jp"
+
+[[source]]
+nom = "J.P. Morgan"
+ats = "oracle"
+slug = "jpmc.fa.oraclecloud.com/CX_1001"
+secteur = "Banque & finance"
+domaine = "jpmorganchase.com"
+
+[[source]]
+nom = "Goldman Sachs"
+ats = "oracle"
+slug = "hdpc.fa.us2.oraclecloud.com/CampusHiring"
+secteur = "Banque & finance"
+domaine = "goldmansachs.com"
+
+[[source]]
+nom = "BNY"
+ats = "oracle"
+slug = "eofe.fa.us2.oraclecloud.com/BNY-Careers"
+secteur = "Banque & finance"
+domaine = "bny.com"
+
+[[source]]
+nom = "Schroders"
+ats = "oracle"
+slug = "ekbq.fa.em2.oraclecloud.com/CX_2"
+secteur = "Banque & finance"
+domaine = "schroders.com"
+
+[[source]]
+nom = "Tradeweb"
+ats = "oracle"
+slug = "ecnf.fa.us2.oraclecloud.com/CX"
+secteur = "Banque & finance"
+domaine = "tradeweb.com"
+
+[[source]]
+nom = "Nomura"
+ats = "successfactors"
+slug = "careers.nomura.com/Nomura/search"
+secteur = "Banque & finance"
+domaine = "nomura.com"
+
+# ── Données, logiciels & groupes tech (Workday) ───────────────────────────────
+
+[[source]]
+nom = "S&P Global"
+ats = "workday"
+slug = "spgi.wd5.myworkdayjobs.com/spgi/SPGI_Careers"
+secteur = "Données & médias"
+domaine = "spglobal.com"
+
+[[source]]
+nom = "FactSet"
+ats = "workday"
+slug = "factset.wd108.myworkdayjobs.com/factset/FactSetCareers"
+secteur = "Données & médias"
+domaine = "factset.com"
+
+[[source]]
+nom = "Murex"
+ats = "workday"
+slug = "murex.wd3.myworkdayjobs.com/murex/MurexCareerPage1"
+secteur = "Logiciels & outils"
+domaine = "murex.com"
+
+[[source]]
+nom = "Salesforce"
+ats = "workday"
+slug = "salesforce.wd12.myworkdayjobs.com/salesforce/External_Career_Site"
+secteur = "Logiciels & outils"
+domaine = "salesforce.com"
+
+[[source]]
+nom = "Adobe"
+ats = "workday"
+slug = "adobe.wd5.myworkdayjobs.com/adobe/external_experienced"
+secteur = "Logiciels & outils"
+domaine = "adobe.com"
+
+[[source]]
+nom = "Autodesk"
+ats = "workday"
+slug = "autodesk.wd1.myworkdayjobs.com/autodesk/Ext"
+secteur = "Logiciels & outils"
+domaine = "autodesk.com"
+
+[[source]]
+nom = "Workday"
+ats = "workday"
+slug = "workday.wd5.myworkdayjobs.com/workday/Workday"
+secteur = "Logiciels & outils"
+domaine = "workday.com"
+
+[[source]]
+nom = "Thales"
+ats = "workday"
+slug = "thales.wd3.myworkdayjobs.com/thales/Careers"
+secteur = "Logiciels & outils"
+domaine = "thalesgroup.com"
+
+[[source]]
+nom = "PayPal"
+ats = "workday"
+slug = "paypal.wd1.myworkdayjobs.com/paypal/jobs"
+secteur = "Fintech"
+domaine = "paypal.com"
+
+[[source]]
+nom = "Mastercard"
+ats = "workday"
+slug = "mastercard.wd1.myworkdayjobs.com/mastercard/CorporateCareers"
+secteur = "Fintech"
+domaine = "mastercard.com"
+
+# ── Startups françaises et européennes (Teamtailor, Workable, Ashby, SmartRecruiters) ───
+
+[[source]]
+nom = "Voodoo"
+ats = "ashby"
+slug = "voodoo"
+secteur = "Grand public"
+domaine = "voodoo.io"
+
+[[source]]
+nom = "Hugging Face"
+ats = "workable"
+slug = "huggingface"
+secteur = "IA"
+domaine = "huggingface.co"
+ia = true
+
+[[source]]
+nom = "Deezer"
+ats = "teamtailor"
+slug = "deezer"
+secteur = "Grand public"
+domaine = "deezer.com"
+
+[[source]]
+nom = "Yousign"
+ats = "teamtailor"
+slug = "yousign"
+secteur = "Logiciels & outils"
+domaine = "yousign.com"
+
+[[source]]
+nom = "Ornikar"
+ats = "teamtailor"
+slug = "ornikar"
+secteur = "Grand public"
+domaine = "ornikar.com"
+
+[[source]]
+nom = "PayFit"
+ats = "teamtailor"
+slug = "payfit"
+secteur = "Logiciels & outils"
+domaine = "payfit.com"
+
+[[source]]
+nom = "Indy"
+ats = "teamtailor"
+slug = "indy"
+secteur = "Fintech"
+domaine = "indy.fr"
+
+[[source]]
+nom = "Shine"
+ats = "teamtailor"
+slug = "shine"
+secteur = "Fintech"
+domaine = "shine.fr"
+
+[[source]]
+nom = "ASOS"
+ats = "smartrecruiters"
+slug = "ASOS"
+secteur = "Grand public"
+domaine = "asos.com"
+
+[[source]]
+nom = "Believe"
+ats = "smartrecruiters"
+slug = "Believe"
+secteur = "Grand public"
+domaine = "believe.com"
