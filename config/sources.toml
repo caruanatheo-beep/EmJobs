@@ -874,3 +874,55 @@ ats = "smartrecruiters"
 slug = "Believe"
 secteur = "Grand public"
 domaine = "believe.com"
+
+# ── Studios produit, conseil et SaaS parisiens ────────────────────────────────
+
+[[source]]
+nom = "Theodo"
+ats = "lever"
+slug = "theodo"
+secteur = "Studios & conseil produit"
+domaine = "theodo.com"
+
+[[source]]
+nom = "Hubvisory"
+ats = "recruitee"
+slug = "hubvisory"
+secteur = "Studios & conseil produit"
+domaine = "hubvisory.com"
+
+[[source]]
+nom = "OCTO Technology"
+ats = "smartrecruiters"
+slug = "octotechnology"
+secteur = "Studios & conseil produit"
+domaine = "octo.com"
+
+[[source]]
+nom = "Ekimetrics"
+ats = "lever"
+slug = "ekimetrics"
+secteur = "Studios & conseil produit"
+domaine = "ekimetrics.com"
+ia = true
+
+[[source]]
+nom = "Skello"
+ats = "teamtailor"
+slug = "skello"
+secteur = "Logiciels & outils"
+domaine = "skello.io"
+
+[[source]]
+nom = "Sunday"
+ats = "teamtailor"
+slug = "sunday"
+secteur = "Fintech"
+domaine = "sundayapp.com"
+
+[[source]]
+nom = "Lifen"
+ats = "ashby"
+slug = "lifen"
+secteur = "Santé"
+domaine = "lifen.fr"

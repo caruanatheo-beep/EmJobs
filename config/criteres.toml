@@ -131,7 +131,8 @@ metiers = ["product security", "product engineer", "product engineering", "produ
            "legal", "juriste", "manufacturing", "quality assurance", "sales", "engineer",
            "engineers", "engineering", "developer", "developpeur", "developpeuse", "machine learning",
            "production", "supply chain", "category manager", "controls", "fixed income",
-           "middle office", "back office", "kyc"]
+           "middle office", "back office", "kyc", "talent acquisition", "recruiter", "recruitment",
+           "recrutement", "charge de recrutement"]
 # Contrats non retenus. Retire « alternance » et « apprentice » de cette liste
 # pour afficher aussi les alternances.
 contrats = ["alternance", "alternant", "alternante", "apprenti", "apprentie",

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import logging
 import re
+import time
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from datetime import date, datetime, timezone
@@ -17,6 +18,8 @@ from .dates import start_month
 
 log = logging.getLogger("emjobs")
 MAX_DETAILS_PER_SOURCE = 150
+DETAIL_WORKERS = 6
+WORKDAY_WORKERS = 4  # Workday clusters rate-limit employers together.
 
 
 @dataclass
@@ -67,7 +70,7 @@ def _age(published: str, today: date) -> int | None:
 def offers_from(source: Source, jobs: list[RawJob], *, criteria: Criteria, today: date,
                 first_seen: dict[str, str]) -> list[Offer]:
     offers: list[Offer] = []
-    details = 0
+    candidates = []
     for job in jobs:
         if not title_candidate(job.title, criteria):
             continue
@@ -76,12 +79,17 @@ def offers_from(source: Source, jobs: list[RawJob], *, criteria: Criteria, today
         known = [l for l in job.locations if l and l.strip() and not re.search(r"\d+ locations?|lieux", l, re.I)]
         if known and not cities(known, criteria):
             continue  # Located elsewhere: no detail request needed.
-        if job.details:
-            if details >= MAX_DETAILS_PER_SOURCE:
-                log.warning("%s : limite de %s fiches détaillées atteinte", source.name, MAX_DETAILS_PER_SOURCE)
-                break
-            details += 1
-            job.load_details()
+        candidates.append(job)
+    pending = [job for job in candidates if job.details]
+    if len(pending) > MAX_DETAILS_PER_SOURCE:
+        log.warning("%s : %s fiches détaillées, limitées à %s", source.name, len(pending), MAX_DETAILS_PER_SOURCE)
+        skipped = set(map(id, pending[MAX_DETAILS_PER_SOURCE:]))
+        candidates = [job for job in candidates if id(job) not in skipped]
+        pending = pending[:MAX_DETAILS_PER_SOURCE]
+    # Detail pages are independent: read them a few at a time.
+    with ThreadPoolExecutor(max_workers=DETAIL_WORKERS) as pool:
+        list(pool.map(RawJob.load_details, pending))
+    for job in candidates:
         match = classify(job.title, job.locations, employment=job.employment,
                          description=job.description, criteria=criteria)
         if not match or not trusted_url(job.url, source):
@@ -111,7 +119,7 @@ def deduplicate(offers: list[Offer]) -> list[Offer]:
 
 
 def collect(previous: list[dict] | None = None, *, sources: tuple[Source, ...] | None = None,
-            workers: int = 8) -> tuple[list[Offer], dict[str, dict]]:
+            workers: int = 16) -> tuple[list[Offer], dict[str, dict]]:
     """Return offers and a per-source check. A failing source keeps its previous offers."""
     criteria = load_criteria()
     sources = sources if sources is not None else load_sources()
@@ -121,24 +129,27 @@ def collect(previous: list[dict] | None = None, *, sources: tuple[Source, ...] |
                   if isinstance(row, dict) and row.get("url") and row.get("published")}
 
     def run(source: Source) -> tuple[Source, list[Offer] | None, str]:
+        started = time.monotonic()
         session = requests.Session()
         try:
             raw = CONNECTORS[source.ats](source, session)
-            return source, offers_from(source, raw, criteria=criteria, today=today, first_seen=first_seen), ""
+            found = offers_from(source, raw, criteria=criteria, today=today, first_seen=first_seen)
+            log.info("%s : %s annonces lues, %s retenues en %.0f s", source.name, len(raw), len(found),
+                     time.monotonic() - started)
+            return source, found, ""
         except (requests.RequestException, ValueError, KeyError, TypeError) as error:
             status = getattr(getattr(error, "response", None), "status_code", "")
             return source, None, f"{type(error).__name__} {status}".strip()
         finally:
             session.close()
 
-    # Workday boards share rate limits across employers: read them one after the other.
-    sequential = [s for s in sources if s.ats == "workday"]
-    groups = ([sequential] if sequential else []) + [[s] for s in sources if s.ats != "workday"]
     offers: list[Offer] = []
     checks: dict[str, dict] = {}
-    with ThreadPoolExecutor(max_workers=workers) as pool:
-        results = (result for group in pool.map(lambda group: [run(s) for s in group], groups) for result in group)
-        for source, found, error in results:
+    # Workday has its own small pool: its clusters rate-limit employers together.
+    with ThreadPoolExecutor(max_workers=workers) as pool, ThreadPoolExecutor(max_workers=WORKDAY_WORKERS) as workday:
+        futures = [(workday if source.ats == "workday" else pool).submit(run, source) for source in sources]
+        for future in futures:
+            source, found, error = future.result()
             if found is not None:
                 offers.extend(found)
                 checks[source.name] = {"status": "ok", "count": len(found)}

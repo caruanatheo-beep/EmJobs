@@ -16,7 +16,8 @@ from urllib.parse import quote
 
 import requests
 
-from .config import Source
+from .classify import contains
+from .config import Source, load_criteria
 from .dates import iso_day, workday_posted
 
 TIMEOUT = (8, 25)
@@ -169,31 +170,56 @@ def _patient(send, *args, attempts: int = 4, **kwargs) -> requests.Response:
             response.raise_for_status()
             return response
         retry = response.headers.get("Retry-After", "")
-        time.sleep(min(60, int(retry)) if retry.isdigit() else min(60, 5 * 2 ** attempt))
+        # Short pauses: a source still refusing after a few tries keeps its previous offers.
+        time.sleep(min(15, int(retry)) if retry.isdigit() else 2 * 2 ** attempt)
     raise AssertionError("unreachable")
 
 
 # Searches sent to platforms that cannot list a whole catalogue cheaply.
-SEARCH_TERMS = ("product", "produit", "product owner", "intern", "internship", "stage", "graduate",
-                "junior", "strategy", "UX")
-# Workday rate-limits shared clusters: fewer searches, at most 5 pages each.
+SEARCH_TERMS = ("product", "produit", "intern", "internship", "stage", "graduate", "UX", "growth")
+# Fallback when a Workday board has no Paris/London location filter.
 WORKDAY_TERMS = ("product", "produit", "intern", "graduate", "UX", "growth")
+
+
+def _workday_place_facets(facets, parameter: str = "") -> dict[str, list[str]]:
+    """Location filter values naming a configured city (Paris, London…), grouped by filter."""
+    places = [e for place in load_criteria().places for e in place.expressions]
+    found: dict[str, list[str]] = {}
+    for node in facets or []:
+        if not isinstance(node, dict):
+            continue
+        name = str(node.get("facetParameter") or parameter)
+        if isinstance(node.get("values"), list):
+            for key, ids in _workday_place_facets(node["values"], name).items():
+                found.setdefault(key, []).extend(ids)
+        elif node.get("id") and "location" in name.lower() and contains(str(node.get("descriptor") or ""), places):
+            found.setdefault(name, []).append(str(node["id"]))
+    return found
 
 
 def workday(source: Source, session: requests.Session) -> list[RawJob]:
     host, tenant, site = source.slug.split("/")
     api = f"https://{host}/wday/cxs/{tenant}/{site}"
     found: dict[str, RawJob] = {}
-    # Keyword searches keep large catalogues (banks, Big Tech) to a few pages;
-    # details are read later, only for titles that pass the Em Jobs filter.
-    for term in WORKDAY_TERMS:
-        for offset in range(0, 100, 20):
-            response = _patient(session.post, f"{api}/jobs", attempts=6, headers={"Content-Type": "application/json"},
-                                json={"appliedFacets": {}, "limit": 20, "offset": offset, "searchText": term})
-            payload = response.json()
-            postings = payload.get("jobPostings") if isinstance(payload, dict) else None
-            if not isinstance(postings, list):
-                raise ValueError("réponse Workday inattendue")
+
+    def page(facets: dict, term: str, offset: int) -> dict:
+        payload = _patient(session.post, f"{api}/jobs", headers={"Content-Type": "application/json"},
+                           json={"appliedFacets": facets, "limit": 20, "offset": offset, "searchText": term}).json()
+        if not isinstance(payload, dict) or not isinstance(payload.get("jobPostings"), list):
+            raise ValueError("réponse Workday inattendue")
+        return payload
+
+    first = page({}, "", 0)
+    # Preferred: list every posting in Paris/London through the board's own location
+    # filter (a few pages). Otherwise: a handful of keyword searches.
+    queries = [({name: ids}, "") for name, ids in _workday_place_facets(first.get("facets")).items()]
+    queries = queries or [({}, term) for term in WORKDAY_TERMS]
+    for facets, term in queries:
+        total = None
+        for offset in range(0, 600, 20):
+            payload = page(facets, term, offset)
+            total = total if total is not None else int(payload.get("total") or 0)
+            postings = payload["jobPostings"]
             for item in postings:
                 path = str(item.get("externalPath") or "")
                 if not path.startswith("/job/") or path in found:
@@ -211,10 +237,8 @@ def workday(source: Source, session: requests.Session) -> list[RawJob]:
                     url=f"https://{host}/{site}{path}", published=workday_posted(str(item.get("postedOn") or "")),
                     details=details,
                 )
-            if len(postings) < 20:
+            if len(postings) < 20 or offset + 20 >= total or (term and offset >= 80):
                 break
-            time.sleep(0.5)
-        time.sleep(0.5)
     return list(found.values())
 
 
