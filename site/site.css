@@ -594,3 +594,4 @@ body::before{opacity:.55}
 .card .logo:has(img[hidden]){background:var(--tint);border-radius:8px}
 .card .initials{color:var(--accent)}
 @media(max-width:650px){.card-team .family{display:none}}
+.brand{gap:5px;font-size:21px;letter-spacing:-.03em}.brand-word{font-weight:850}.brand-jobs{font-weight:500}
