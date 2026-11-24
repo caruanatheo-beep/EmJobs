@@ -30,6 +30,19 @@ def test_failing_source_keeps_its_previous_offers(monkeypatch):
     assert kept["Startup Test"].kind == "Stage" and kept["Startup Test"].ai
 
 
+def test_previous_offers_are_filtered_with_todays_criteria(monkeypatch):
+    def down(source, session):
+        raise requests.ConnectionError("down")
+
+    monkeypatch.setitem(collector.CONNECTORS, "bpce", down)
+    previous = [{"title": "Stage - Chargé(e) de Conformité Produits", "company": "Filiale A", "source": "Groupe Test",
+                 "kind": "Stage", "family": "Produit (autres)", "cities": ["Paris"], "location_source": "Paris",
+                 "url": "https://example.com/job/2", "published": "2026-11-01",
+                 "date_label": "Publiée le 1 novembre 2026", "start": "Non précisé", "start_month": "", "score": 60}]
+    offers, checks = collector.collect(previous, sources=(GROUP,))
+    assert offers == [] and checks["Groupe Test"]["status"] == "error"
+
+
 def test_undated_offer_keeps_its_first_seen_date(monkeypatch):
     monkeypatch.setitem(collector.CONNECTORS, "ashby", lambda source, session: [
         RawJob("Junior Product Owner", ["London"], "https://jobs.ashbyhq.com/startup/2")])

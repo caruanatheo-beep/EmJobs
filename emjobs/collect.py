@@ -19,7 +19,7 @@ from .dates import start_month
 log = logging.getLogger("emjobs")
 MAX_DETAILS_PER_SOURCE = 150
 DETAIL_WORKERS = 6
-WORKDAY_WORKERS = 4  # Workday clusters rate-limit employers together.
+WORKDAY_WORKERS = 2  # Workday clusters rate-limit employers together.
 
 
 @dataclass
@@ -156,7 +156,8 @@ def collect(previous: list[dict] | None = None, *, sources: tuple[Source, ...] |
                 continue
             retained = [_offer_from_record(row, source) for row in previous
                         if (row.get("source") or row.get("company")) == source.name]
-            retained = [offer for offer in retained if offer]
+            # Previous offers still go through today's criteria (a criterion may have changed).
+            retained = [offer for offer in retained if offer and title_candidate(offer.title, criteria)]
             offers.extend(retained)
             checks[source.name] = {"status": "retained" if retained else "error", "count": len(retained), "error": error}
             log.warning("%s indisponible (%s) : %s offre(s) précédente(s) conservée(s)", source.name, error, len(retained))
