@@ -926,3 +926,106 @@ ats = "ashby"
 slug = "lifen"
 secteur = "Santé"
 domaine = "lifen.fr"
+
+# ── Londres : fintech, grand public et SaaS ───────────────────────────────────
+
+[[source]]
+nom = "Lendable"
+ats = "ashby"
+slug = "lendable"
+secteur = "Fintech"
+domaine = "lendable.co.uk"
+
+[[source]]
+nom = "Cloudflare"
+ats = "greenhouse"
+slug = "cloudflare"
+secteur = "Logiciels & outils"
+domaine = "cloudflare.com"
+
+[[source]]
+nom = "HelloFresh"
+ats = "greenhouse"
+slug = "hellofresh"
+secteur = "Grand public"
+domaine = "hellofresh.com"
+
+[[source]]
+nom = "Moneybox"
+ats = "ashby"
+slug = "moneybox"
+secteur = "Fintech"
+domaine = "moneyboxapp.com"
+
+[[source]]
+nom = "Zopa"
+ats = "lever"
+slug = "zopa"
+secteur = "Fintech"
+domaine = "zopa.com"
+
+[[source]]
+nom = "Quantexa"
+ats = "ashby"
+slug = "quantexa"
+secteur = "IA"
+domaine = "quantexa.com"
+ia = true
+
+[[source]]
+nom = "Granola"
+ats = "ashby"
+slug = "granola"
+secteur = "IA"
+domaine = "granola.ai"
+ia = true
+
+[[source]]
+nom = "Motorway"
+ats = "ashby"
+slug = "motorway"
+secteur = "Grand public"
+domaine = "motorway.co.uk"
+
+[[source]]
+nom = "Zego"
+ats = "ashby"
+slug = "zego"
+secteur = "Fintech"
+domaine = "zego.com"
+
+[[source]]
+nom = "Moonpig"
+ats = "lever"
+slug = "moonpig"
+secteur = "Grand public"
+domaine = "moonpig.com"
+
+[[source]]
+nom = "Lyst"
+ats = "smartrecruiters"
+slug = "lyst"
+secteur = "Grand public"
+domaine = "lyst.com"
+
+[[source]]
+nom = "Braze"
+ats = "greenhouse"
+slug = "braze"
+secteur = "Logiciels & outils"
+domaine = "braze.com"
+
+[[source]]
+nom = "MongoDB"
+ats = "greenhouse"
+slug = "mongodb"
+secteur = "Logiciels & outils"
+domaine = "mongodb.com"
+
+[[source]]
+nom = "Snowflake"
+ats = "ashby"
+slug = "snowflake"
+secteur = "IA"
+domaine = "snowflake.com"
+ia = true

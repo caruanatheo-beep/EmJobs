@@ -35,6 +35,12 @@ def test_early_career_product_roles_are_kept(title, kind, family):
     "Legal Intern - Product & Compliance",
     "Data Scientist Internship",
     "Product Manager Assurance vie",  # « vie » en minuscules n'est pas un VIE
+    "Stage - Chargé(e) de Conformité Produits et Services d'Investissement",
+    "STAGE - Actuaire Produit H/F",
+    "Stage - Assistant Spécialiste Produit – Gestions Actions H/F",
+    "ETF and Equities Product Relationship Management",
+    "Assistant Analyst Risques de crédit & Product Owner",
+    "Talent Acquisition Specialist (Tech & Product)",
 ])
 def test_other_roles_are_excluded(title):
     assert classify(title, PARIS) is None
