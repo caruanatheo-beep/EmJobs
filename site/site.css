@@ -534,3 +534,63 @@ footer .spark{color:var(--spark)}
   .fact-location .icon,.fact-start .icon{color:#e39cf2}
   .source-request.repo-cta{background:linear-gradient(160deg,#1d1729,#221a33)}
 }
+
+/* ── Épuré : moins de cadres, moins d'aplats, un mode sombre calme ─────── */
+body::before{opacity:.55}
+.masthead{background:transparent;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;padding:8px 2px}
+.primary-nav{border-left:0;padding-left:6px}
+.primary-nav a[aria-current="page"]{background:var(--tint);color:var(--accent)}
+.brand-mark{box-shadow:none}
+.masthead-note{font-weight:550}
+.offers-intro{padding:10px 0 14px}
+#offers-view .filters{background:transparent;border:0;box-shadow:none;padding:0;-webkit-backdrop-filter:none;backdrop-filter:none}
+#offers-view .search-row input{height:46px;border-radius:12px;background:var(--surface-card);border-color:var(--line)}
+@media(min-width:761px){
+  #offers-view .filter-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  #offers-view .filter-field label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  #offers-view .filter-trigger{width:auto;height:34px;padding:6px 14px;border-radius:999px;background:transparent;border-color:var(--line);font-size:13px}
+  #offers-view .filter-trigger.is-selected{background:var(--tint);border-color:var(--tint-edge)}
+}
+.results-header{margin:18px 0 12px}
+.sort-options{border:0;background:transparent;padding:0;gap:2px}
+.sort-options button{border-radius:999px}
+.sort-options button[aria-pressed="true"]{background:var(--tint);border-color:transparent;color:var(--accent)}
+.card{box-shadow:none;border-color:var(--line);background:var(--surface-card)}
+.card:hover{box-shadow:0 6px 18px #2a1f4012;border-color:var(--tint-edge)}
+.card h3{font-weight:620}
+.card .kind[data-kind]{background:transparent;border:1px solid currentColor;padding:1px 7px;font-weight:650}
+.date.is-new{background:transparent;padding:0;color:var(--spark);font-weight:650}
+.ai-badge{background:transparent;color:var(--magenta);border:1px solid currentColor;padding:0 6px}
+.facts{font-weight:500}
+.loc-country{display:none}
+@media(prefers-color-scheme:dark){
+  :root{color:#e7e3ee;background:#141218;--muted:#9a93a8;--line:#29252f;--surface-card:#19171e;--surface-edge:#29252f;
+    --surface-panel:#19171e;--accent:#b9a6f2;--spark:#eba596;--magenta:#cfa3e3;--tint:#241f2e;--tint-edge:#3a3346;--sheet:#19171e}
+  body::before{background:none}
+  .brand-jobs{color:#e7e3ee}
+  .brand-word,.offers-intro h1 .gradient{background:linear-gradient(120deg,#b9a6f2,#e3a7cf 60%,#eba596)}
+  .brand-word,.offers-intro h1 .gradient{-webkit-background-clip:text;background-clip:text;color:transparent}
+  .primary-nav a[aria-current="page"],.sort-options button[aria-pressed="true"]{background:var(--tint);border-color:transparent;color:#ddd3fa}
+  .primary-nav a:hover{background:#1f1b26}
+  #offers-view .search-row input,.filter-trigger{background:#19171e;border-color:#2b2732}
+  #offers-view .filter-trigger.is-selected,.filter-chip{background:var(--tint);border-color:var(--tint-edge);color:#ddd3fa}
+  .card{background:#19171e;border-color:#25212b;box-shadow:none}
+  .card:hover{border-color:#3a3346;box-shadow:none}
+  .card:hover h3{color:#ddd3fa}
+  .card h3{color:#ece8f3}
+  .company{color:#e2dde9}
+  .family,.date{color:#8d8699}
+  .facts{color:#bcb5c7}
+  .fact-start,.family{border-color:#2e2935}
+  .fact-location .icon,.fact-start .icon{color:#a99bc4}
+  .card .kind[data-kind="Stage"]{color:#c3b3f5}
+  .card .kind[data-kind="VIE"]{color:#9fc0e6}
+  .card .kind[data-kind="Graduate"]{color:#eeb0a5}
+  .card .kind[data-kind="Junior"]{color:#9fd3c4}
+  .card .logo,.source-link .logo{background:#ece9f1;border-radius:7px}
+  .secondary-action{background:transparent}
+}
+#offers-view .search-icon{top:15px}
+.card .logo:has(img[hidden]){background:var(--tint);border-radius:8px}
+.card .initials{color:var(--accent)}
+@media(max-width:650px){.card-team .family{display:none}}
