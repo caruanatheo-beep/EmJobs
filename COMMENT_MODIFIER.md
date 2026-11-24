@@ -51,6 +51,14 @@ Pour Workday, le `TENANT` est le premier mot de l'hôte : pour
 
 Pour mettre une entreprise en pause sans la supprimer : ajoute `actif = false`.
 
+### Tester une entreprise avant de l'ajouter
+
+Onglet **Actions** → « Tester une entreprise » → **Run workflow**, puis saisis
+`outil:identifiant`, par exemple `lever:theodo` (plusieurs : séparés par des
+virgules). Au bout d'une minute, ouvre l'exécution : le résumé indique combien
+d'annonces l'entreprise publie, combien sont à Paris ou Londres, et lesquelles
+Em Jobs garderait. Rien n'est publié sur le site.
+
 ## Changer les critères
 
 Tout est dans `config/criteres.toml`, avec des commentaires :

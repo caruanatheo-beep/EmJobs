@@ -61,6 +61,10 @@ def test_plain_title_uses_the_experience_required():
 
 def test_employer_contract_field_marks_internships():
     assert classify("Product Marketing Manager", PARIS, employment="Intern").kind == "Stage"
+    # Lever boards file internships under "Apprenticeship / Internship".
+    assert classify("Stagiaire product manager F/M", PARIS, employment="Apprenticeship / Internship").kind == "Stage"
+    assert classify("Technical Product Manager - Junior", PARIS, employment="Apprenticeship") is None
+    assert classify("Product Owner Apprentice", PARIS, employment="Apprenticeship / Internship") is None
 
 
 def test_minimum_years():

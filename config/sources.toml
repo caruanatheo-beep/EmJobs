@@ -1029,3 +1029,34 @@ slug = "snowflake"
 secteur = "IA"
 domaine = "snowflake.com"
 ia = true
+
+# ── Ajouts novembre 2026 ──────────────────────────────────────────────────────
+
+[[source]]
+nom = "Bigblue"
+ats = "lever"
+slug = "bigblue"
+secteur = "Logiciels & outils"
+domaine = "bigblue.co"
+
+[[source]]
+nom = "Wiremind"
+ats = "teamtailor"
+slug = "wiremind-1714146283"
+secteur = "Logiciels & outils"
+domaine = "wiremind.io"
+ia = true
+
+[[source]]
+nom = "HomeExchange"
+ats = "teamtailor"
+slug = "homeexchange"
+secteur = "Grand public"
+domaine = "homeexchange.com"
+
+[[source]]
+nom = "Jane Street"
+ats = "greenhouse"
+slug = "janestreet"
+secteur = "Banque & finance"
+domaine = "janestreet.com"

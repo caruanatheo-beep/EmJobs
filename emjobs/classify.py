@@ -71,8 +71,12 @@ def classify(title: str, locations: list[str], *, employment: str = "", descript
     title = re.sub(r"\s+", " ", str(title or "")).strip()
     if not title:
         return None
+    internship_words = dict(criteria.kinds).get("Stage", ())
+    # Boards often file internships under "Apprenticeship / Internship": the
+    # contract field excludes a posting only when it does not also say internship.
+    excluded_contract = contains(employment, criteria.excluded_contracts) and not contains(employment, internship_words)
     if (contains(title, criteria.seniority) or contains(title, criteria.excluded_roles)
-            or contains(title, criteria.excluded_contracts) or contains(employment, criteria.excluded_contracts)):
+            or contains(title, criteria.excluded_contracts) or excluded_contract):
         return None
     family = next((f.name for f in criteria.families if contains(title, f.expressions)), "")
     if not family:
